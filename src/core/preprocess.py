@@ -40,16 +40,4 @@ class Preprocess:
             logger.error(f'Ooops, something went wrong in fuck_punctuation. Mama told ya not to use profanity, '
                          f'but you didnt listen')
 
-    @staticmethod
-    async def words_visualisation():
-        try:
-            df = await Preprocess().preprocess()
-            text_combined = ' '.join(df['text'].dropna())
 
-            wordcloud = WordCloud(max_words=1000, background_color='white').generate(text_combined)
-            plt.figure(figsize=(8, 6))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            plt.show()
-        except TypeError as e:
-            logger.error(f'Here is the problem: {e!r}')
