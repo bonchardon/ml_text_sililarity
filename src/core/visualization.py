@@ -5,6 +5,7 @@ from loguru import logger
 
 from core.preprocess import Preprocess
 
+
 class Visualization:
     @staticmethod
     async def words_visualisation():
