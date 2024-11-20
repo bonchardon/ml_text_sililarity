@@ -2,9 +2,6 @@ from typing import Any
 from string import punctuation
 from asyncio import gather
 
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
 import numpy as np
@@ -48,7 +45,7 @@ class Preprocess:
             logger.error(f'Getting issues here, namely ==> {e!r}')
 
     @staticmethod
-    async def fuck_punctuation(text_data) -> DataFrame:
+    async def get_rid_of_punctuation(text_data) -> DataFrame:
         try:
             return text_data.translate(str.maketrans('', '', punctuation)).lower()
         except ValueError as e:
@@ -59,7 +56,7 @@ class Preprocess:
         try:
             df: DataFrame = await self.preprocess(self.df)
             tasks: list = [
-                self.fuck_punctuation(text)
+                self.get_rid_of_punctuation(text)
                 for text in df['text']
             ]
             cleaned_texts: Any = await gather(*tasks)

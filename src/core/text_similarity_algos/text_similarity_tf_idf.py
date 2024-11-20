@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-class TfIdfSIMILARITY:
+class TfIdfSimilarity:
 
     def __init__(self, data_texts: dict[str]):
         self.data_texts: dict[str] = data_texts
